@@ -43,6 +43,22 @@ def login_create(request):
 
     return redirect(login_url)
 
-@login_required(login_url='authors:login', redirect_field_name='next')
+@login_required(login_url=':login', redirect_field_name='next')
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    calleds = Called.objects.filter(
+    author=request.user
+    ).order_by('-id')
+    return render(request, 'dashboard.html', {
+        'calleds': calleds,
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
+def logout_view(request):
+    if not request.POST:
+        return redirect(reverse('login'))
+
+    if request.POST.get('username') != request.user.username:
+        return redirect(reverse('login'))
+
+    logout(request)
+    return redirect(reverse('login'))

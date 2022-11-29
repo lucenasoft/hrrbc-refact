@@ -1,0 +1,20 @@
+/* CSS PARA MENU */ 
+
+#menu {
+    background-color: white;
+    max-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#menu nav {
+    margin-left: 100px;
+}
+
+#menu img {
+    max-width: 40px;
+    margin-right: 100px;
+    cursor: pointer;
+}
