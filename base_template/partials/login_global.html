@@ -1,0 +1,13 @@
+{% load static %}
+<div class="container">
+    <div class="container-display">
+        <img class='container-display' src="{% static 'logo-display.svg' %}" alt="">
+        <p>
+            Seja bem vindo, acesse e aproveite todo o conteúdo, somos uma equipe de profissionais empenhados em trazer o
+            melhor serviço direcionado a você usuário.
+        </p>
+    </div>
+    {% if not user.is_authenticated %}
+    {% include 'partials/login_partial.html' %}
+    {% endif %}
+</div>

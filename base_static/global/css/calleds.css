@@ -1,0 +1,172 @@
+.main-called {
+    margin: auto;
+    padding-top: 0;
+}
+
+.main-called-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 4rem;
+}
+
+.container-called {
+    max-width: 144rem;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.container-called-view {
+    justify-content: center;
+    border-radius: 10px;
+    border-bottom-right-radius: 40px;
+    display: flex;
+    margin-top: 50px;
+}
+
+.called-cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+.called-cover img {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px ;
+    min-width: 100%;
+
+}
+
+.called {
+    background: white;
+    transition: all 200ms ease-in-out;
+    border-radius: 15px;
+    filter: drop-shadow(1px 4px 1px black);
+}
+
+.called-list-item {
+    max-width: 64rem;
+    height: fit-content;
+}
+
+.called-list-item:hover {
+    transform: scale(1.010);
+}
+
+.called-title-container {
+    padding: 1rem;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.called-title-container a {
+    text-decoration: none;
+    color: black;
+    font-family: "Roboto";
+}
+
+.called-content {
+    padding: 3rem;
+    padding-top: 2rem;
+    font-size: 20px;
+}
+
+.called-author {
+    font-family: "Roboto";
+    text-align: center;
+    padding-top: 1rem;
+    padding: 1rem;
+}
+
+.called-author-item {
+    color: rgb(5, 56, 116);
+    margin-right: 1rem;
+}
+
+.called-author a {
+    color: rgb(5, 56, 116);
+    transition: all 300ms ease-in-out;
+    text-decoration: none;  
+}
+
+.called-author a:hover {
+    color: rgb(3, 107, 192);
+}
+
+.called-footer {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px ;
+    font-family: "Roboto";
+    padding: 0.50rem;
+    background: linear-gradient(-45deg,#26292b,#0d1c24);
+}
+
+.called-footer a{
+    display: block;
+    flex-flow: row nowrap;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    transition: all 200ms ease-in-out;
+}
+
+.called-footer a:hover {
+    filter: blur(2);
+}
+
+/* CSS DO EDITOR DE CHAMADOS */
+.inputs-edit-called h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+.inputs-edit-called {
+background-color: white;
+    width: 669px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 26px;
+}
+.form-group-edit {
+    display: inline;
+    width: 650px;
+    margin: auto;
+    padding: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-group-edit label {
+    font-weight: bold;
+}
+
+#id_is_resolved {
+    margin: none;
+}
+
+.form-group-edit textarea {
+    max-width: 300px;
+    max-height: 50px;
+    padding: 4px;
+    resize: none;
+    font-size: 15px;
+}
+
+.form-group-edit form {
+    display: inline-block;
+}
+
+.form-group-btn button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    padding-inline: 40px;
+    background: #166285;
+    cursor: pointer;
+}
+
+.form-group-btn {
+    padding: 20px;
+}

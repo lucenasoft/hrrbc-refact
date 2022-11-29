@@ -1,0 +1,32 @@
+<div class="container-radius">
+    <div class="container-inputs">
+        <h1>
+            <p class="a">Olá!</p>
+            Seja bem vindo de volta.
+        </h1>
+        <h2>
+            Faça o seu login agora.
+        </h2>
+        <div class="login-container">
+            <form action="{% url 'login_create' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="login-container">
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{field}}
+                        {{ field.errors }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="form-content form-content-grid">
+                    <div class="form-group">
+                        <button type="submit">Entrar</button>
+                    </div>
+                    {% include 'partials/messages.html' %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

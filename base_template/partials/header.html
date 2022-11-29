@@ -1,0 +1,15 @@
+{% load static %}
+<header>
+    <nav>
+        <a class="logo" href="/">
+            <img src="{% static 'logo.svg' %}" alt="">
+            HRRBC</a>
+        <ul class="nav-list">
+            {% if request.user.is_authenticated == False %}
+            <li>
+                <a href="{% url 'login' %}">Entrar</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
