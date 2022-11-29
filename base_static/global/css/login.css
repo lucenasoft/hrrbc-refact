@@ -2,7 +2,7 @@
     width: 860px;
     height: 490px;
     background: linear-gradient(-45deg,#389ed4,#166285);
-    border-radius: 10px;
+    border-radius: 1px;
     border-bottom-right-radius: 40px;
     display: flex;
     margin: auto;
@@ -34,7 +34,6 @@
     width: 370px;
     min-height: 490px;
     background-color: white;
-    border-top-right-radius: 10px;
     border-top-left-radius: 40px;
     border-bottom-right-radius: 40px;
 }

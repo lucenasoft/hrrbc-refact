@@ -43,12 +43,12 @@ def login_create(request):
 
     return redirect(login_url)
 
-@login_required(login_url=':login', redirect_field_name='next')
+@login_required(login_url='login', redirect_field_name='next')
 def dashboard(request):
     calleds = Called.objects.filter(
     author=request.user
     ).order_by('-id')
-    return render(request, 'dashboard.html', {
+    return render(request, 'dashboard.html', context={
         'calleds': calleds,
     })
 
