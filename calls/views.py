@@ -36,9 +36,13 @@ def login_create(request):
 
         if authenticated_user is not None:
             login(request, authenticated_user)
-            return redirect(reverse('authors:dashboard'))
+            return redirect(reverse('dashboard'))
 
         else:
             messages.error(request, 'Login ou senha incorretos.')
 
     return redirect(login_url)
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard(request):
+    return render(request, 'dashboard.html')

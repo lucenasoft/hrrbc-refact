@@ -13,19 +13,17 @@
 
                 <div class="login-container">
                     {% for field in form %}
-                    <div class="form-group">
+                    <div class="form-login">
                         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {{field}}
                         {{ field.errors }}
                     </div>
                     {% endfor %}
                 </div>
-                <div class="form-content form-content-grid">
-                    <div class="form-group">
-                        <button type="submit">Entrar</button>
-                    </div>
-                    {% include 'partials/messages.html' %}
+                <div class="form-login">
+                    <button type="submit">Entrar</button>
                 </div>
+                {% include 'partials/messages.html' %}
             </form>
         </div>
     </div>
