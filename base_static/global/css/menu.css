@@ -16,6 +16,7 @@
 #menu img {
     max-width: 40px;
     cursor: pointer;
+    
 }
 
 #menu button {
@@ -24,4 +25,9 @@
     background-color: white;
     margin-right: 100px;
     max-width: 40px;
+    transition:all 0.4s ease-in-out;
+}
+
+#menu button:hover {
+    transform: scale(1.10);
 }
