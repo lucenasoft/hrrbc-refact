@@ -45,11 +45,62 @@ def login_create(request):
 
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard(request):
-    calleds = Called.objects.filter(
+    called = Called.objects.filter(
     author=request.user
     ).order_by('-id')
     return render(request, 'dashboard.html', context={
-        'calleds': calleds,
+        'calleds': called,
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
+def dashboard_called_new(request):
+    form = AuthorCalledForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
+
+    if form.is_valid():
+        called: Called = form.save(commit=False)
+
+        called.author = request.user
+        called.created_at = datetime.datetime.now()
+
+        called.save()
+
+        messages.success(request,'Chamado registrado!')
+        return redirect(reverse('dashboard'))
+    
+    return render(request, 'new_called.html', context= {
+        'form': form
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
+def dashboard_called_edit(request, id):
+    called = Called.objects.get(
+        author=request.user,
+        pk=id,
+        
+    )
+
+    if not called:
+        raise Http404()
+
+    form = AuthorCalledForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+        instance=called
+    )
+
+    if form.is_valid():
+        called = form.save(commit=False)
+        called.author = request.user
+        form.save()
+        messages.success(request,'Seu chamado foi alterado!')
+        return redirect(reverse('dashboard'))
+
+    return render(request,'edit_called.html', context={
+        'calleds': called,
+        'form': form,
     })
 
 @login_required(login_url='login', redirect_field_name='next')
