@@ -1,0 +1,26 @@
+<div class="c-container">
+    <ul>
+        <li>
+            Solicitante
+        </li>
+        <li>
+            Setor
+        </li>
+        <li>
+            Ações
+        </li>
+    </ul>
+    {% for called in calleds %}
+    <ul>
+        <li>
+            {{called.user_requester}}
+        </li>
+        <li>
+            {{called.category}}
+        </li>
+        <li>
+            <a href="{% url 'called_edit' called.id %}">Editar</a>
+        </li>
+    </ul>
+    {% endfor %}
+</div>

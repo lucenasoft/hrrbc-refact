@@ -1,0 +1,19 @@
+.c-container {
+    max-width: 800px;
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.c-container ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0px 0px 0px 0px;
+    border: 1px solid black
+}
+
+.c-container li {
+    margin: auto;
+    padding: 10px;
+    ;
+}
