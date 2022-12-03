@@ -1,19 +1,52 @@
 .c-container {
     max-width: 800px;
-    background-color: white;
     margin: auto;
-    border-radius: 5px;
+    margin-top: 200px;
 }
 
 .c-container ul {
+    background-color: white;
     list-style-type: none;
     display: flex;
     padding: 0px 0px 0px 0px;
-    border: 1px solid black
+    border: 1px solid rgb(110, 109, 109);
+    margin: auto;
 }
 
 .c-container li {
     margin: auto;
     padding: 10px;
-    ;
+}
+
+.head-crud {
+    border-radius: 5px 5px 0px 0px;
+}
+
+.head-crud li{
+    padding: 20px;
+}
+
+.btn-add-crud{
+    display: flex;
+    background-color: transparent;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.btn-add-crud button {
+    padding: 8px 23px 8px 23px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    transition: ease-in-out 0.20s;
+}
+
+.btn-add-crud button:hover {
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+.btn-add-crud a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
 }
