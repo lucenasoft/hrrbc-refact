@@ -1,7 +1,7 @@
 .c-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 80px;
 }
 
 .c-container ul {
@@ -16,6 +16,8 @@
 .c-container li {
     margin: auto;
     padding: 10px;
+    width: 200px;
+    text-align: center;
 }
 
 .head-crud {
