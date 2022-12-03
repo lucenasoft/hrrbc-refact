@@ -41,7 +41,7 @@ class Called(models.Model):
     priority = models.ForeignKey(
         Priority, on_delete=models.SET_NULL, null=True
     )
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=False)
     call_defect = models.TextField()
     description = models.TextField()
     pendencies = models.TextField()

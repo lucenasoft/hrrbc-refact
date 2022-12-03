@@ -1,7 +1,7 @@
 {% load static %}
 <div id="menu">
     <nav>
-        Para o menu
+        <img class='logo' src="{% static 'logo.svg' %}" alt="">
     </nav>
     <form action="{%url 'logout' %}" method='POST'>
         {% csrf_token %}
