@@ -26,27 +26,40 @@
     padding: 20px;
 }
 
-.btn-add-crud{
+.btn-add-crud, .btn-edit-crud{
     display: flex;
     background-color: transparent;
     justify-content: flex-end;
     margin-bottom: 15px;
 }
 
-.btn-add-crud button {
-    padding: 8px 23px 8px 23px;
+.btn-edit-crud {
+    display: flex;
+    width: 20px;
+    margin: auto;
+    justify-content: center;
+}
+
+.btn-add-crud button, .btn-edit-crud button{
     background-color: green;
     border: none;
     border-radius: 5px;
+    padding: 5px 11px 5px 11px;
     transition: ease-in-out 0.20s;
 }
 
-.btn-add-crud button:hover {
-    filter: drop-shadow(1px 1px 1px black);
+.btn-add-crud button:hover, .btn-edit-crud button:hover {
+    filter: drop-shadow(1px 1px 3px black);
 }
 
-.btn-add-crud a {
+.btn-add-crud a, .btn-edit-crud a{
     text-decoration: none;
     font-weight: bold;
     color: white;
+    padding: 10px 23px 10px 23px;
+}
+
+.btn-edit-crud button {
+    margin: auto;
+    background-color: rgb(228, 196, 19);
 }

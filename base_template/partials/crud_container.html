@@ -24,7 +24,9 @@
             {{called.category}}
         </li>
         <li>
-            <a href="{% url 'called_edit' called.id %}">Editar</a>
+            <div class="btn-edit-crud">
+                <button type="submit"><a href="{%url 'called_edit' called.id %}">EDIT</a></button>
+            </div>
         </li>
     </ul>
     {% endfor %}
