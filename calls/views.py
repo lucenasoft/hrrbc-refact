@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
+                              render)
 from django.urls import reverse
 
 from calls.forms.called_form import AuthorCalledForm
@@ -56,9 +57,12 @@ def dashboard(request):
 def dashboard_all(request):
     called = Called.objects.all(
     ).order_by('-id')
-    return render(request, 'dashboard_all.html', context={
-        'calleds': called,
-    })
+    if request.POST.get('dashboard_all') == request.user.username:
+        return render(request, 'dashboard_all.html', context={
+            'calleds': called,
+        })
+    else:
+        return render(reverse('login'))
 
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard_called_new(request):
@@ -109,6 +113,13 @@ def dashboard_called_edit(request, id):
     return render(request,'edit_called.html', context={
         'calleds': called,
         'form': form,
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
+def called_view(request, id):
+    called = get_object_or_404(Called, pk=id)
+    return render(request, 'called_view.html', context={
+        'called': called,
     })
 
 @login_required(login_url='login', redirect_field_name='next')

@@ -65,3 +65,19 @@
     margin: auto;
     background-color: rgb(228, 196, 19);
 }
+
+
+.btn-view button {
+    max-height: 40px;
+    margin-left: 3px;
+    background-color: green;
+}
+
+.btn-view img{
+    display: flex;
+    max-width: 23px;
+}
+
+.btn-view a {
+    padding: 0;
+}
