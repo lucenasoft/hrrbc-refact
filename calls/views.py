@@ -53,6 +53,14 @@ def dashboard(request):
     })
 
 @login_required(login_url='login', redirect_field_name='next')
+def dashboard_all(request):
+    called = Called.objects.all(
+    ).order_by('-id')
+    return render(request, 'dashboard_all.html', context={
+        'calleds': called,
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
 def dashboard_called_new(request):
     form = AuthorCalledForm(
         data=request.POST or None,

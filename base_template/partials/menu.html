@@ -2,6 +2,8 @@
 <div id="menu">
     <nav>
         <img class='logo' src="{% static 'logo.svg' %}" alt="">
+        <a href="{% url 'dashboard_all' %}">T. Chamados</a>
+        <a href="{% url 'dashboard' %}">S. Chamados</a>
     </nav>
     <form action="{%url 'logout' %}" method='POST'>
         {% csrf_token %}

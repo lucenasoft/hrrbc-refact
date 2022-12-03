@@ -1,0 +1,32 @@
+<div class="c-container">
+    <ul class='head-crud'>
+        <li>
+            Solicitante
+        </li>
+        <li>
+            Setor
+        </li>
+        <li>
+            Prioridade
+        </li>
+        <li>
+            Técnico
+        </li>
+    </ul>
+    {% for called in calleds %}
+    <ul>
+        <li>
+            {{called.user_requester}}
+        </li>
+        <li>
+            {{called.category}}
+        </li>
+        <li>
+            {{called.priority}}
+        </li>
+        <li>
+            {{called.author}}
+        </li>
+    </ul>
+    {% endfor %}
+</div>
