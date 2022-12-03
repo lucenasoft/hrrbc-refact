@@ -2,13 +2,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    border-top: 5px solid rgb(0, 0, 0);
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 10px auto auto auto;
+    border-radius: 2px;
 }
 
 .container-form-edit form{
-    max-height: 800px;
-    max-width: 400px;
     text-align: center;
+}
+
+.container-form-edit input, select, label {
+    display: flex;
+    border-radius: 2px;
+    border: none;
+    margin-top: 5px;
+}
+
+.container-form-edit input, select {
+    background: #333333;
+    color: white;
+    padding: 5px;
 }
 
 .container-form-edit textarea {
@@ -17,6 +34,7 @@
     padding: 4px;
     resize: none;
     font-size: 15px;
+    border-radius: 5px;
 }
 
 .form-btn button{
@@ -27,4 +45,26 @@
     padding-inline: 40px;
     background: #166285;
     cursor: pointer;
+}
+
+.return-btn {
+    display: flex;
+    margin: 10px auto auto auto;
+}
+
+.return-btn button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 10px auto auto auto;
+    transition: ease-in-out 0.20s;
+}
+
+.return-btn button:hover {
+    transform: scale(1.10);
+}
+
+input[type=checkbox]{
+    width: 25px;
+    height: 25px;
 }
