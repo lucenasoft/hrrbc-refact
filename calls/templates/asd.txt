@@ -1,3 +1,0 @@
-<a href="{% url 'called_new' %}">Novo Chamado</a>
-{% for called in calleds %}
-<a href=" {% url 'called_edit' called.id %}">{{called.title}}</a>

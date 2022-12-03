@@ -1,0 +1,30 @@
+.container-form-edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.container-form-edit form{
+    max-height: 800px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.container-form-edit textarea {
+    max-width: 300px;
+    max-height: 50px;
+    padding: 4px;
+    resize: none;
+    font-size: 15px;
+}
+
+.form-btn button{
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    padding-inline: 40px;
+    background: #166285;
+    cursor: pointer;
+}
