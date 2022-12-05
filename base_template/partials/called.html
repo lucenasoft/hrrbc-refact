@@ -1,8 +1,13 @@
 <div class="titulo-called">
     <h1>{{called.title}}</h1>
     <h2>Usuário Solicitante: {{called.user_requester}}</h2>
-    <h3>Setor: {{called.priority}}</h3>
-    <h4>Resolvido? {{called.is_resolved}}</h4>
+    <h3>Prioridade: {{called.priority}}</h3>
+    <h4>Resolvido?{% if called.is_resolved == True %}
+        Sim
+    {% else %}
+        Não
+    {% endif %}
+    </h4>
 </div>
 <div>
     <span>
