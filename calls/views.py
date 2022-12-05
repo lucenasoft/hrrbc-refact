@@ -62,7 +62,7 @@ def dashboard_all(request):
             'calleds': called,
         })
     else:
-        return render(reverse('login'))
+        return redirect(reverse('login'))
 
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard_called_new(request):
