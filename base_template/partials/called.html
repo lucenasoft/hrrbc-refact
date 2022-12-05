@@ -1,0 +1,30 @@
+<div class="titulo-called">
+    <h1>{{called.title}}</h1>
+    <h2>Usuário Solicitante: {{called.user_requester}}</h2>
+    <h3>Setor: {{called.priority}}</h3>
+    <h4>Resolvido? {{called.is_resolved}}</h4>
+</div>
+<div>
+    <span>
+        <i class="fas fa-user"></i>
+        {{called.author.first_name}} {{called.author.last_name}}
+    </span>
+    <span>
+        <i class="fas fa-calendar-alt"></i>
+        {{called.created_at|date:"d/m/Y"}} às {{called.created_at|date:"H:i"}}
+    </span>
+    <span>
+        <i class="fas fa-layer-group"></i>
+        <span>{{called.category.name}}</span>
+    </span>
+</div>
+<div class="describs-called">
+    <h1>Defeito Relatado:</h1>
+    <p>{{called.call_defect}}</p>
+    <h1>Solução Aplicada:</h1>
+    <p>{{called.description}}</p>
+    <h1>Pendencias:</h1>
+    <p>{{called.pendencies}}</p>
+    <h1>Solução Aplicada em:</h1>
+    <p>{{called.appliedsolution}}</p>
+</div>

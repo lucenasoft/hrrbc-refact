@@ -1,0 +1,23 @@
+.called-view-container {
+    background-color: white;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.titulo-called {
+    padding: 20px;
+}
+
+.called-view-container span {
+    padding: 20px;
+}
+
+.describs-called {
+    padding: 20px;
+}
+
+h1,h2,h3,h4 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
