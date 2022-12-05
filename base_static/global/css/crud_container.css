@@ -61,11 +61,17 @@
     padding: 10px 23px 10px 23px;
 }
 
-.btn-edit-crud button {
-    margin: auto;
-    background-color: rgb(228, 196, 19);
+.btn-edit-crud a {
+    margin: 0;
+    padding: 0;
 }
 
+.btn-edit-crud button {
+    display: flex;
+    margin-left: 3px;
+    height: 35px;
+    background-color: rgb(255, 221, 28);
+}
 
 .btn-view button {
     max-height: 40px;
@@ -80,4 +86,5 @@
 
 .btn-view a {
     padding: 0;
+    margin: 0;
 }

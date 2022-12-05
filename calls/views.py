@@ -57,12 +57,9 @@ def dashboard(request):
 def dashboard_all(request):
     called = Called.objects.all(
     ).order_by('-id')
-    if request.POST.get('dashboard_all') == request.user.username:
-        return render(request, 'dashboard_all.html', context={
-            'calleds': called,
-        })
-    else:
-        return redirect(reverse('login'))
+    return render(request, 'dashboard_all.html', context={
+        'calleds': called,
+    })
 
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard_called_new(request):

@@ -32,7 +32,11 @@
         </li>
         <li>
             <div class="btn-edit-crud">
-                <button type="submit"><a href="{%url 'called_edit' called.id %}">EDIT</a></button>
+                <button type="submit"><a href="{%url 'called_edit' called.id %}">
+                    <span class="material-symbols-outlined">
+                        edit_note
+                    </span>
+                </a></button>
                 <div class="btn-view">
                     <button type="submit"><a href="{%url 'called_view' called.id %}"><img src="{% static 'view.svg' %}" alt=""></a></button>
                 </div>
