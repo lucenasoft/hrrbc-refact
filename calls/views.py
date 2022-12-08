@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -58,7 +58,7 @@ def dashboard(request):
     })
 
 def exportar_chamados_xlsx(request):
-    MDATA = datetime.now().strftime('%Y-%m-%d')
+    MDATA = datetime.now().strftime('%Y-%m-%d ')
     model = 'Called'
     filename = 'lista_chamados.xlsx'
     _filename = filename.split('.')
@@ -73,8 +73,9 @@ def exportar_chamados_xlsx(request):
         'call_defect',
         'description',
         'pendencies',
+        'created_at',
     )
-    columns = ('Titulo', 'Usuario Solicitante','Prioridade','Resolvido','Técnico','Setor','Defeito Relatado','Solução Aplicada','Pendencias')
+    columns = ('Titulo', 'Usuario Solicitante','Prioridade','Resolvido','Técnico','Setor','Defeito Relatado','Solução Aplicada','Pendencias','Data de Abertura')
     response = export_xlsx(model, filename_final, queryset, columns)
     return response
 
@@ -97,7 +98,7 @@ def dashboard_called_new(request):
         called: Called = form.save(commit=False)
 
         called.author = request.user
-        called.created_at = datetime.now()
+        called.created_at = datetime.now(timezone.utc)
 
         called.save()
 
