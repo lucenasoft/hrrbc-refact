@@ -3,7 +3,7 @@ from datetime import datetime
 import xlwt
 from django.http import HttpResponse
 
-MDATA = datetime.now().strftime('%Y-%m-%d ')
+MDATA = datetime.now().strftime('%Y-%m-%d')
 
 
 def export_xlsx(model, filename, queryset, columns):
@@ -27,7 +27,7 @@ def export_xlsx(model, filename, queryset, columns):
     for row, rowdata in enumerate(rows):
         row_num += 1
         for col, val in enumerate(rowdata):
-            ws.write(row_num, col, val, default_style)
+            ws.write(row_num, col, str(val), default_style)
 
     wb.save(response)
     return response

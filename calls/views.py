@@ -58,9 +58,9 @@ def dashboard(request):
     })
 
 def exportar_chamados_xlsx(request):
-    MDATA = datetime.now().strftime('%Y-%m-%d ')
+    MDATA = datetime.now().strftime('%Y-%m-%d')
     model = 'Called'
-    filename = 'lista_chamados.xlsx'
+    filename = 'lista_chamados.xls'
     _filename = filename.split('.')
     filename_final = f'{_filename[0]}_{MDATA}.{_filename[1]}'
     queryset = Called.objects.all().values_list(
