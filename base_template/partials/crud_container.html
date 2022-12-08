@@ -1,7 +1,16 @@
 {% load static %}
 <div class="c-container">
+    <div class="input-search">
+        <form action="." method="GET">
+            <input type="search" name="search">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
     {% if request.user.is_authenticated %}
     <div class="btn-add-crud">
+        <button type="submit"><a href="{%url 'export_xlsx' %}"><span class="material-symbols-outlined">
+                    export_notes
+                </span></a></button>
         <button type="submit"><a href="{%url 'called_new' %}">ADD</a></button>
     </div>
     {% endif %}
@@ -33,12 +42,13 @@
         <li>
             <div class="btn-edit-crud">
                 <button type="submit"><a href="{%url 'called_edit' called.id %}">
-                    <span class="material-symbols-outlined">
-                        edit_note
-                    </span>
-                </a></button>
+                        <span class="material-symbols-outlined">
+                            edit_note
+                        </span>
+                    </a></button>
                 <div class="btn-view">
-                    <button type="submit"><a href="{%url 'called_view' called.id %}"><img src="{% static 'view.svg' %}" alt=""></a></button>
+                    <button type="submit"><a href="{%url 'called_view' called.id %}"><img src="{% static 'view.svg' %}"
+                                alt=""></a></button>
                 </div>
             </div>
         </li>

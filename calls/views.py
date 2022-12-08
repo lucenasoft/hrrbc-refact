@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -8,6 +8,7 @@ from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
                               render)
 from django.urls import reverse
 
+from calls.actions.export_xlsx import export_xlsx
 from calls.forms.called_form import AuthorCalledForm
 from calls.models import Called
 
@@ -49,9 +50,33 @@ def dashboard(request):
     called = Called.objects.filter(
     author=request.user
     ).order_by('-id')
+    search = request.GET.get('search')
+    if search:
+        called = called.filter(user_requester__icontains=f'{search}')
     return render(request, 'dashboard.html', context={
         'calleds': called,
     })
+
+def exportar_chamados_xlsx(request):
+    MDATA = datetime.now().strftime('%Y-%m-%d')
+    model = 'Called'
+    filename = 'lista_chamados.xlsx'
+    _filename = filename.split('.')
+    filename_final = f'{_filename[0]}_{MDATA}.{_filename[1]}'
+    queryset = Called.objects.all().values_list(
+        'title',
+        'user_requester',
+        'priority__name',
+        'is_resolved',
+        'author__first_name',
+        'category__name',
+        'call_defect',
+        'description',
+        'pendencies',
+    )
+    columns = ('Titulo', 'Usuario Solicitante','Prioridade','Resolvido','Técnico','Setor','Defeito Relatado','Solução Aplicada','Pendencias')
+    response = export_xlsx(model, filename_final, queryset, columns)
+    return response
 
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard_all(request):
@@ -72,7 +97,7 @@ def dashboard_called_new(request):
         called: Called = form.save(commit=False)
 
         called.author = request.user
-        called.created_at = datetime.datetime.now()
+        called.created_at = datetime.now()
 
         called.save()
 
