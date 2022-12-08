@@ -27,6 +27,9 @@ def export_xlsx(model, filename, queryset, columns):
     for row, rowdata in enumerate(rows):
         row_num += 1
         for col, val in enumerate(rowdata):
+            print(rowdata)
+            if col == 'created_at':
+                val.strftime('%Y-%m-%d')
             ws.write(row_num, col, str(val), default_style)
 
     wb.save(response)
