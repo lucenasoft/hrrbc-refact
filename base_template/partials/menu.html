@@ -14,6 +14,12 @@
             </span>
              Registros
         </a>
+        <a href="{% url 'dashboard_all' %}">
+            <span class="material-symbols-outlined">
+                public
+            </span>
+             Passagem de Ponto
+        </a>
     </nav>
     <form action="{%url 'logout' %}" method='POST'>
         {% csrf_token %}

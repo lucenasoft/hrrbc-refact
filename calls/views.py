@@ -146,6 +146,13 @@ def called_view(request, id):
     })
 
 @login_required(login_url='login', redirect_field_name='next')
+def pass_point(request):
+    point = Called.objects.all()
+    return render(request, 'dashboard_view.html', context= {
+        'point': point,
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
 def logout_view(request):
     if not request.POST:
         return redirect(reverse('login'))
