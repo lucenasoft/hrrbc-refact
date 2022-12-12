@@ -12,20 +12,20 @@
             <span class="material-symbols-outlined">
                 public
             </span>
-             Registros
+            Registros
         </a>
-        <a href="{% url 'dashboard_all' %}">
+        <a href="{% url 'pass_view' %}">
             <span class="material-symbols-outlined">
-                public
+                list_alt
             </span>
-             Passagem de Ponto
+            Registro de Plantão
         </a>
     </nav>
     <form action="{%url 'logout' %}" method='POST'>
         {% csrf_token %}
         <input type="hidden" name="username" value="{{request.user.username}}">
         <button type="submit">
-            <img src="{% static 'ttt.png' %}" alt="logout"> 
+            <img src="{% static 'ttt.png' %}" alt="logout">
         </button>
-    </form> 
+    </form>
 </div>

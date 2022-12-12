@@ -9,8 +9,8 @@ from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
 from django.urls import reverse
 
 from calls.actions.export_xlsx import export_xlsx
-from calls.forms.called_form import AuthorCalledForm
-from calls.models import Called
+from calls.forms.called_form import AuthorCalledForm, AuthorPassForm
+from calls.models import Called, Pass_point
 
 from .forms import LoginForm
 
@@ -146,10 +146,35 @@ def called_view(request, id):
     })
 
 @login_required(login_url='login', redirect_field_name='next')
-def pass_point(request):
-    point = Called.objects.all()
-    return render(request, 'dashboard_view.html', context= {
+def pass_view(request):
+    point = Pass_point.objects.all()
+    search = request.GET.get('search')
+    if search:
+        point = point.filter(created_at__icontains=f'{search}')
+    return render(request, 'pass_view.html', context= {
         'point': point,
+    })
+
+@login_required()
+def pass_add(request):
+    form = AuthorPassForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
+
+    if form.is_valid():
+        called: Called = form.save(commit=False)
+
+        called.author = request.user
+        called.created_at = datetime.now(timezone.utc)
+
+        called.save()
+
+        messages.success(request,'Passagem registrada!')
+        return redirect(reverse('pass_view'))
+    
+    return render(request, 'new_pass.html', context= {
+        'form': form
     })
 
 @login_required(login_url='login', redirect_field_name='next')

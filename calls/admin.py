@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import AppliedSolution, Called, ImpressoraDeth, Priority, Sector
+from .models import (AppliedSolution, Called, ImpressoraDeth, Pass_point,
+                     Priority, Sector)
 
 
 @admin.register(Called)
@@ -21,3 +22,4 @@ admin.site.register(Sector)
 admin.site.register(Priority)
 admin.site.register(AppliedSolution)
 admin.site.register(ImpressoraDeth)
+admin.site.register(Pass_point)

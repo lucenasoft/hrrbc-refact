@@ -1,0 +1,46 @@
+{% load static %}
+<div class="c-container">
+    <div class="input-search">
+        <form action="." method="GET">
+            <input type="search" name="search">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    {% if request.user.is_authenticated %}
+    <div class="btn-add-crud">
+        <button type="submit"><a href="{%url 'export_xlsx' %}"><span class="material-symbols-outlined">
+                    export_notes
+                </span></a></button>
+        <button type="submit"><a href="{%url 'called_new' %}">ADD</a></button>
+    </div>
+    {% endif %}
+    <ul class='head-crud'>
+        <li>
+            Técnico
+        </li>
+        <li>
+            Data
+        </li>
+        <li>
+            Ações
+        </li>
+    </ul>
+    {% for point in points %}
+    <ul>
+        <li>
+            {{point.author}}
+        </li>
+        <li>
+            {{point.created_at}}
+        </li>
+        <li>
+        </li>
+        <li>
+            <div class="btn-view">
+                <button type="submit"><a href="{%url 'called_view' point.id %}"><img src="{% static 'view.svg' %}"
+                            alt=""></a></button>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+</div>

@@ -8,6 +8,12 @@ from django.utils.text import slugify
 
 # Create your models here.
 
+class Pass_point(models.Model):
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True
+    )
 
 class Sector(models.Model):
     name = models.CharField(max_length=65)  # charfild = varchar
