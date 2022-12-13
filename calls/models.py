@@ -67,6 +67,9 @@ class Called(models.Model):
         AppliedSolution, on_delete=models.SET_NULL, null=True
     )
 
+    def get_created_at(self):
+        return self.created_at.strftime('%d/%m/%y %H:%M Hrs')
+
     def __str__(self):
         return self.title
 
