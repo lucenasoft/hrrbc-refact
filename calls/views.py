@@ -146,13 +146,13 @@ def called_view(request, id):
     })
 
 @login_required(login_url='login', redirect_field_name='next')
-def pass_view(request):
+def pass_dashboard(request):
     point = Pass_point.objects.all()
     search = request.GET.get('search')
     if search:
         point = point.filter(created_at__icontains=f'{search}')
-    return render(request, 'pass_view.html', context= {
-        'point': point,
+    return render(request, 'pass_dashboard.html', context= {
+        'points': point,
     })
 
 @login_required()
@@ -163,18 +163,25 @@ def pass_add(request):
     )
 
     if form.is_valid():
-        called: Called = form.save(commit=False)
+        point: Pass_point = form.save(commit=False)
 
-        called.author = request.user
-        called.created_at = datetime.now(timezone.utc)
+        point.author = request.user
+        point.created_at = datetime.now(timezone.utc)
 
-        called.save()
+        point.save()
 
         messages.success(request,'Passagem registrada!')
-        return redirect(reverse('pass_view'))
+        return redirect(reverse('pass_dashboard'))
     
     return render(request, 'new_pass.html', context= {
         'form': form
+    })
+
+@login_required(login_url='login', redirect_field_name='next')
+def pass_view(request, id):
+    pass_view = get_object_or_404(Pass_point, pk=id)
+    return render(request, 'pass_view.html', context={
+        'pass_view': pass_view,
     })
 
 @login_required(login_url='login', redirect_field_name='next')

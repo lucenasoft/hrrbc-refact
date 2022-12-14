@@ -1,9 +1,9 @@
 {% extends 'global.html' %}
 
-{% block title %} Registro de Plantão {% endblock title %}
+{% block title %}{{pass_view.title}}{% endblock title %}
 
 {% block content %}
-{% include 'partials/menu.html' %}
-{% include 'partials/messages.html' %}
-{% include 'partials/crud_pass.html' %}
+<div class="called-view-container">
+{% include 'partials/pass_p.html' %}
+</div>
 {% endblock content %}

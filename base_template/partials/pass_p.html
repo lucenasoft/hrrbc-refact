@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="return-btn view">
+    <form action="{%url 'pass_dashboard' %}" method='POST'>
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{request.user.username}}">
+        <button type="submit">
+            <img src="{% static 'arrow.svg' %}" alt="arrow-return">
+        </button>
+    </form>
+</div>
+
+<div class="titulo-called">
+    <h1>{{pass_view.title}}</h1>
+    </h4>
+</div>
+<div class="span-list">
+    <span>
+        <i class="fas fa-user"></i>
+        {{pass_view.author.first_name}} {{called.author.last_name}}
+    </span>
+    <span>
+        <i class="fas fa-calendar-alt"></i>
+        {{pass_view.created_at|date:"d/m/Y"}} às {{called.created_at|date:"H:i"}}
+    </span>
+</div>
+<div class="describs-called">
+    <h1>Defeito Relatado:</h1>
+    <p>{{pass_view.description}}</p>
+</div>
