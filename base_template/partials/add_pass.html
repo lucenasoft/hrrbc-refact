@@ -8,14 +8,13 @@
         </button>
     </form>
 </div>
-<div class="container-form-edit">
+<div class="container-pass-edit container-form-edit">
     {% for field in form %}
     <form action="{{form_action}}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div {{ field.field.widget.attrs.class }}">
+        <div class="pass_add">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{field}}
-            {{ field.errors }}
             {% endfor %}
             <div class="form-btn">
                 <button type="submit">Salvar</button>

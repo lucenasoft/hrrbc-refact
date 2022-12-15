@@ -37,6 +37,15 @@
     border-radius: 5px;
 }
 
+.container-pass-edit textarea {
+    max-width: 300px;
+    max-height: 500px;
+    padding: 4px;
+    resize: none;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
 .form-btn button{
     color: white;
     border: none;
@@ -67,4 +76,8 @@
 input[type=checkbox]{
     width: 25px;
     height: 25px;
+}
+
+.search-title input{
+    max-width: 200px;
 }

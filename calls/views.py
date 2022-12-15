@@ -162,7 +162,7 @@ def called_view(request, id):
 
 @login_required(login_url='login', redirect_field_name='next')
 def pass_dashboard(request):
-    point = Pass_point.objects.all()
+    point = Pass_point.objects.all().order_by('-id')
     search = request.GET.get('search')
     if search:
         point = point.filter(created_at__icontains=f'{search}')

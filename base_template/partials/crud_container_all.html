@@ -1,4 +1,10 @@
+{% load static %}
 <div class="c-container">
+    <div class="btn-add-crud">
+        <button type="submit"><a href="{%url 'export_xlsx' %}"><span class="material-symbols-outlined">
+                    export_notes
+                </span></a></button>
+    </div>
     <ul class='head-crud'>
         <li>
             Solicitante
@@ -11,6 +17,9 @@
         </li>
         <li>
             Técnico
+        </li>
+        <li>
+            Ações
         </li>
     </ul>
     {% for called in calleds %}
@@ -26,6 +35,14 @@
         </li>
         <li>
             {{called.author}}
+        </li>
+        <li>
+            <div class="btn-edit-crud">
+                <div class="btn-view">
+                    <button type="submit"><a href="{%url 'called_view' called.id %}"><img src="{% static 'view.svg' %}"
+                                alt=""></a></button>
+                </div>
+            </div>
         </li>
     </ul>
     {% endfor %}
