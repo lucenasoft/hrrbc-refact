@@ -8,10 +8,10 @@
     </div>
     {% if request.user.is_authenticated %}
     <div class="btn-add-crud">
-        <button type="submit"><a href="{%url 'export_xlsx' %}"><span class="material-symbols-outlined">
+        <button type="submit"><a href="{%url 'export_pass_xlsx' %}"><span class="material-symbols-outlined">
                     export_notes
                 </span></a></button>
-        <button type="submit"><a href="{%url 'called_new' %}">ADD</a></button>
+        <button type="submit"><a href="{%url 'pass_add' %}">ADD</a></button>
     </div>
     {% endif %}
     <ul class='head-crud'>
@@ -34,11 +34,11 @@
             {{point.created_at}}
         </li>
         <li>
-        </li>
-        <li>
-            <div class="btn-view">
-                <button type="submit"><a href="{%url 'pass_view' point.id %}"><img src="{% static 'view.svg' %}"
-                            alt=""></a></button>
+            <div class="btn-edit-crud">
+                <div class="btn-view">
+                    <button type="submit"><a href="{%url 'pass_view' point.id %}"><img src="{% static 'view.svg' %}"
+                                alt=""></a></button>
+                </div>
             </div>
         </li>
     </ul>

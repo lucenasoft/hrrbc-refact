@@ -1,0 +1,24 @@
+{% load static %}
+<div class="return-btn">
+    <form action="{%url 'dashboard' %}" method='POST'>
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{request.user.username}}">
+        <button type="submit">
+            <img src="{% static 'arrow.svg' %}" alt="arrow-return">
+        </button>
+    </form>
+</div>
+<div class="container-form-edit">
+    {% for field in form %}
+    <form action="{{form_action}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div {{ field.field.widget.attrs.class }}">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{field}}
+            {{ field.errors }}
+            {% endfor %}
+            <div class="form-btn">
+                <button type="submit">Salvar</button>
+            </div>
+    </form>
+</div>

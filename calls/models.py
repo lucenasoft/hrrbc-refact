@@ -10,10 +10,13 @@ from django.utils.text import slugify
 
 class Pass_point(models.Model):
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField()
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True
     )
+
+    def __str__(self):
+        return self.author
 
 class Sector(models.Model):
     name = models.CharField(max_length=65)  # charfild = varchar

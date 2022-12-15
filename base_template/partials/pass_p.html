@@ -10,10 +10,6 @@
     </form>
 </div>
 
-<div class="titulo-called">
-    <h1>{{pass_view.title}}</h1>
-    </h4>
-</div>
 <div class="span-list">
     <span>
         <i class="fas fa-user"></i>
@@ -21,10 +17,10 @@
     </span>
     <span>
         <i class="fas fa-calendar-alt"></i>
-        {{pass_view.created_at|date:"d/m/Y"}} às {{called.created_at|date:"H:i"}}
+        {{pass_view.created_at|date:"d/m/Y"}} às {{pass_view.created_at|date:"H:i"}}
     </span>
 </div>
 <div class="describs-called">
-    <h1>Defeito Relatado:</h1>
+    <h1>Registro:</h1>
     <p>{{pass_view.description}}</p>
 </div>

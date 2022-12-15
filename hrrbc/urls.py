@@ -15,6 +15,7 @@ urlpatterns = [
     path('dashboard/called/new', views.dashboard_called_new, name='called_new'),
     path('dashboard/called/<int:id>/edit/', views.dashboard_called_edit, name='called_edit'),
     path('export/xlsx', views.exportar_chamados_xlsx, name='export_xlsx'),
+    path('export_pass/xlsx', views.exportar_registros_xlsx, name='export_pass_xlsx'),
     path('called/<int:id>/', views.called_view, name='called_view'),
     path('pass_dashboard/', views.pass_dashboard, name='pass_dashboard'),
     path('pass_dashboard/<int:id>/', views.pass_view, name='pass_view'),

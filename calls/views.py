@@ -79,6 +79,21 @@ def exportar_chamados_xlsx(request):
     response = export_xlsx(model, filename_final, queryset, columns)
     return response
 
+def exportar_registros_xlsx(request):
+    MDATA = datetime.now().strftime('%Y-%m-%d')
+    model = 'Pass_point'
+    filename = 'lista_registros.xls'
+    _filename = filename.split('.')
+    filename_final = f'{_filename[0]}_{MDATA}.{_filename[1]}'
+    queryset = Pass_point.objects.all().values_list(
+        'author__first_name',
+        'created_at',
+        'description',
+    )
+    columns = ('Técnico', 'Data','Registro')
+    response = export_xlsx(model, filename_final, queryset, columns)
+    return response
+
 @login_required(login_url='login', redirect_field_name='next')
 def dashboard_all(request):
     called = Called.objects.all(
@@ -98,7 +113,7 @@ def dashboard_called_new(request):
         called: Called = form.save(commit=False)
 
         called.author = request.user
-        called.created_at = datetime.now(timezone.utc)
+        called.created_at = datetime.now()
 
         called.save()
 
@@ -166,7 +181,7 @@ def pass_add(request):
         point: Pass_point = form.save(commit=False)
 
         point.author = request.user
-        point.created_at = datetime.now(timezone.utc)
+        point.created_at = datetime.now()
 
         point.save()
 
