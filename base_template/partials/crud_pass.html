@@ -1,11 +1,5 @@
 {% load static %}
 <div class="c-container">
-    <div class="input-search">
-        <form action="." method="GET">
-            <input type="search" name="search">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-    </div>
     {% if request.user.is_authenticated %}
     <div class="btn-add-crud">
         <button type="submit"><a href="{%url 'export_pass_xlsx' %}"><span class="material-symbols-outlined">
@@ -23,6 +17,20 @@
         </li>
         <li>
             Ações
+        </li>
+    </ul>
+    <ul class="search-title">
+        <li>
+            <form action="." method="GET">
+                <input type="search" name="search">
+            </form>
+        </li>
+        <li>
+            <form action="." method="GET">
+                <input type="search" name="search">
+            </form>
+        </li>
+        <li>
         </li>
     </ul>
     {% for point in points %}
