@@ -27,9 +27,15 @@ def export_xlsx(model, filename, queryset, columns):
     for row, rowdata in enumerate(rows):
         row_num += 1
         for col, val in enumerate(rowdata):
-            print(rowdata)
-            if col == 'created_at':
-                val.strftime('%Y-%m-%d')
+            if col == 9:
+                b = str(val)
+                val = str(val).split()
+                date = val[0].split('-')
+                date_ = date[3::-1]
+                hours = val[1][0:8]
+                convert_hours = int(hours[0:2]) - 3
+                val = f'{"/".join(date_)} {convert_hours}:{hours[3:8]}'
+                
             ws.write(row_num, col, str(val), default_style)
 
     wb.save(response)
