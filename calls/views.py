@@ -3,7 +3,8 @@ from datetime import datetime, timezone
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.core.mail import send_mail
+from django.http import Http404, HttpResponse
 from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
                               render)
 from django.urls import reverse
@@ -15,6 +16,10 @@ from calls.models import Called, Pass_point
 from .forms import LoginForm
 
 # Create your views here.
+
+def envia_email(request):
+    send_mail('Assunto','E-mail teste', 'getugbr@gmail.com', ['jonh.getus@gmail.com'],fail_silently=False,)
+    return HttpResponse('Olá')
 
 def login_view(request):
     form = LoginForm()
