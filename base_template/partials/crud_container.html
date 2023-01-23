@@ -16,10 +16,18 @@
             Prioridade
         </li>
         <li>
+            Resolvido
+        </li>
+        <li>
             Ações
         </li>
     </ul>
     <ul class="search-title">
+        <li>
+            <form action="." method="GET">
+                <input type="search" name="search">
+            </form>
+        </li>
         <li>
             <form action="." method="GET">
                 <input type="search" name="search">
@@ -48,6 +56,9 @@
         </li>
         <li>
             {{called.priority}}
+        </li>
+        <li>
+            {{called.is_resolved}}
         </li>
         <li>
             <div class="btn-edit-crud">

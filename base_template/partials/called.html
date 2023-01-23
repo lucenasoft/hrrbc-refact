@@ -5,20 +5,18 @@
         {% csrf_token %}
         <input type="hidden" name="username" value="{{request.user.username}}">
         <button type="submit">
-            <img src="{% static 'arrow.svg' %}" alt="arrow-return"> 
+            <img src="{% static 'arrow.svg' %}" alt="arrow-return">
         </button>
-    </form> 
+    </form>
 </div>
 
 <div class="titulo-called">
     <h1>{{called.title}}</h1>
-    <h2>Usuário Solicitante: <p>{{called.user_requester}}</p></h2>
-    <h3>Prioridade: <p>{{called.priority}}</p></h3>
-    <h4>Resolvido?{% if called.is_resolved == True %}
-        <p>Sim</p>
-    {% else %}
-        <p>Não</p>
-    {% endif %}
+    <h2>Usuário Solicitante: <p>{{called.user_requester}}</p>
+    </h2>
+    <h3>Prioridade: <p>{{called.priority}}</p>
+    </h3>
+    <h4>Resolvido? <p>{{called.is_resolved}}</p>
     </h4>
 </div>
 <div class="span-list">

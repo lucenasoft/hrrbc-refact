@@ -57,7 +57,11 @@ class Called(models.Model):
     description = models.TextField()
     pendencies = models.TextField()
     created_at = models.DateTimeField()
-    is_resolved = models.BooleanField(default=False)
+    ch_y_n = (
+        ('Sim','Sim'),
+        ('Não', 'Não'),
+    )
+    is_resolved = models.CharField(choices=ch_y_n, max_length=10)
     cover = models.ImageField(
         upload_to='calleds/covers/%Y/%m/%d/', blank=True, default='')
     category = models.ForeignKey(
