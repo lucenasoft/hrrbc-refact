@@ -1,9 +1,20 @@
+<script>
+    function enviaForm(username, description) {
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:8000/email/',
+            data: username,
+            success: 'callback'
+        });
+    }
+</script>
+
 {% load static %}
 <div class="return-btn">
-    <form action="{%url 'dashboard' %}" method='POST'>
+    <form action="{%url 'pass_dashboard' %}" method='POST'>
         {% csrf_token %}
         <input type="hidden" name="username" value="{{request.user.username}}">
-        <button type="submit">
+        <button type="submit" onClick="enviaForm();">
             <img src="{% static 'arrow.svg' %}" alt="arrow-return">
         </button>
     </form>
@@ -13,6 +24,7 @@
     <form action="{{form_action}}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="pass_add">
+            <input type="hidden" name="username" value="{{request.user.username}}">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{field}}
             {% endfor %}

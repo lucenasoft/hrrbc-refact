@@ -18,8 +18,12 @@ from .forms import LoginForm
 # Create your views here.
 
 def envia_email(request):
-    send_mail('Assunto','E-mail teste', 'getugbr@gmail.com', ['jonh.getus@gmail.com'],fail_silently=False,)
-    return HttpResponse('Olá')
+    user = request.POST.get('username')
+    description = request.POST.get('description')
+    send_mail(user,description, 'getugbr@gmail.com', ['jonh.getus@gmail.com'], fail_silently=False,)
+    messages.success(request, 'Passagem enviada!')
+
+    return redirect('pass_dashboard')
 
 def login_view(request):
     form = LoginForm()
