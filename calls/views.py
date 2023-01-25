@@ -48,7 +48,7 @@ def login_create(request):
 
         if authenticated_user is not None:
             login(request, authenticated_user)
-            return redirect(reverse('dashboard'))
+            return redirect(reverse('pass_dashboard'))
 
         else:
             messages.error(request, 'Login ou senha incorretos.')
