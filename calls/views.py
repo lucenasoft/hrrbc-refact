@@ -17,7 +17,6 @@ from calls.models import Called, Pass_point
 from .forms import LoginForm
 
 
-@csrf_exempt
 def envia_email(request):
     user = request.POST.get('username')
     description = request.POST.get('description')

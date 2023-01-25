@@ -33,22 +33,24 @@
         <li>
         </li>
     </ul>
-    {% for point in points %}
-    <ul>
-        <li>
-            {{point.author.first_name}}
-        </li>
-        <li>
-            {{point.created_at}}
-        </li>
-        <li>
-            <div class="btn-edit-crud">
-                <div class="btn-view">
-                    <button type="submit"><a href="{%url 'pass_view' point.id %}"><img src="{% static 'view.svg' %}"
-                                alt=""></a></button>
+    <div class="passagens">
+        {% for point in points %}
+        <ul>
+            <li>
+                {{point.author.first_name}}
+            </li>
+            <li>
+                {{point.created_at}}
+            </li>
+            <li>
+                <div class="btn-edit-crud">
+                    <div class="btn-view">
+                        <button type="submit"><a href="{%url 'pass_view' point.id %}"><img src="{% static 'view.svg' %}"
+                                    alt=""></a></button>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    {% endfor %}
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
 </div>

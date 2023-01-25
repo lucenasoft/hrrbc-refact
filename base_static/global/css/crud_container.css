@@ -1,7 +1,12 @@
 .c-container {
     max-width: 1000px;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 20px;
+}
+
+.passagens {
+    height: 350px;
+    overflow-y: auto;
 }
 
 .c-container ul {
