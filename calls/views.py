@@ -8,6 +8,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
                               render)
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from calls.actions.export_xlsx import export_xlsx
 from calls.forms.called_form import AuthorCalledForm, AuthorPassForm
@@ -17,6 +18,7 @@ from .forms import LoginForm
 
 # Create your views here.
 
+@csrf_exempt
 def envia_email(request):
     user = request.POST.get('username')
     description = request.POST.get('description')
@@ -181,21 +183,19 @@ def pass_dashboard(request):
 
 @login_required()
 def pass_add(request):
-    form = AuthorPassForm(
-        data=request.POST or None,
-        files=request.FILES or None,
-    )
+    form = AuthorPassForm(request.POST or None)
 
-    if form.is_valid():
-        point: Pass_point = form.save(commit=False)
+    if request.method == "POST":
+        if form.is_valid():
+            point: Pass_point = form.save(commit=False)
 
-        point.author = request.user
-        point.created_at = datetime.now()
+            point.author = request.user
+            point.created_at = datetime.now()
+            point.description = request.POST.get('description')
+            point.save()
 
-        point.save()
-
-        messages.success(request,'Passagem registrada!')
-        return redirect(reverse('pass_dashboard'))
+            messages.success(request,'Passagem registrada!')
+            return redirect(reverse('pass_dashboard'))
     
     return render(request, 'new_pass.html', context= {
         'form': form

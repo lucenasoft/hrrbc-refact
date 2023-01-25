@@ -1,9 +1,9 @@
 <script>
-    function enviaForm(username, description) {
+    function enviaForm(u) {
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:8000/email/',
-            data: username,
+            url: '/email/',
+            data: $("form").serialize(),
             success: 'callback'
         });
     }
@@ -29,7 +29,7 @@
             {{field}}
             {% endfor %}
             <div class="form-btn">
-                <button type="submit">Salvar</button>
+                <button type="submit" onclick="enviaForm()">Salvar</button>
             </div>
     </form>
 </div>
