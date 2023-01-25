@@ -1,22 +1,21 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from django.http import Http404, HttpResponse
-from django.shortcuts import (get_list_or_404, get_object_or_404, redirect,
-                              render)
+from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from calls.actions.export_xlsx import export_xlsx
+from calls.actions.export_xlsx_register import export_xlsx_register
 from calls.forms.called_form import AuthorCalledForm, AuthorPassForm
 from calls.models import Called, Pass_point
 
 from .forms import LoginForm
 
-# Create your views here.
 
 @csrf_exempt
 def envia_email(request):
@@ -102,7 +101,7 @@ def exportar_registros_xlsx(request):
         'description',
     )
     columns = ('Técnico', 'Data','Registro')
-    response = export_xlsx(model, filename_final, queryset, columns)
+    response = export_xlsx_register(model, filename_final, queryset, columns)
     return response
 
 @login_required(login_url='login', redirect_field_name='next')
@@ -174,9 +173,12 @@ def called_view(request, id):
 @login_required(login_url='login', redirect_field_name='next')
 def pass_dashboard(request):
     point = Pass_point.objects.all().order_by('-id')
-    search = request.GET.get('search')
-    if search:
-        point = point.filter(created_at__icontains=f'{search}')
+    search_tec = request.GET.get('search_tec')
+    search_data = request.GET.get('search_data')
+    if search_data:
+        point = point.filter(created_at__icontains=f'{search_data}')
+    if search_tec:
+        point = point.filter(author__first_name__icontains=f'{search_tec}')
     return render(request, 'pass_dashboard.html', context= {
         'points': point,
     })

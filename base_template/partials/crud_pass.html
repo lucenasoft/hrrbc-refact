@@ -22,12 +22,12 @@
     <ul class="search-title">
         <li>
             <form action="." method="GET">
-                <input type="search" name="search">
+                <input type="search" name="search_tec">
             </form>
         </li>
         <li>
             <form action="." method="GET">
-                <input type="search" name="search">
+                <input type="search" name="search_data">
             </form>
         </li>
         <li>
@@ -36,7 +36,7 @@
     {% for point in points %}
     <ul>
         <li>
-            {{point.author}}
+            {{point.author.first_name}}
         </li>
         <li>
             {{point.created_at}}
